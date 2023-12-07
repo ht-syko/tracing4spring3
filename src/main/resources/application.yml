@@ -1,0 +1,29 @@
+server:
+  port: 30300
+spring:
+  application:
+    name: tracing-test
+  rsocket:
+    server:
+      port: 30400
+
+logging:
+  level:
+    root: info
+    io:
+      rsocket:
+        FrameLogger: DEBUG
+  pattern:
+    level: "%5p [%X{traceId},%X{spanId}]"
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: b3
+      produce: b3_multi
+    enabled: true
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
