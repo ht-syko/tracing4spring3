@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class RestRouter {
 
   @Bean
-  public RouterFunction<ServerResponse> restRoute(final RestToSMR restToSMR) {
+  public RouterFunction<ServerResponse> restRoute(final RestToSMR restToSMR) { // to : execute.devices.{deviceId}.states
     return RouterFunctions.route()
         .GET("/test", request -> restToSMR.getToSMR(request.queryParam("to").orElseThrow()))
         .build();

@@ -20,7 +20,7 @@ public class RSocketService {
     return this.rSocketRequester
         .route(routePath)
         .data(Map.of("result", "success"))
-        .retrieveMono(HashMap.class)
+        .send()
         .then(Mono.just(Map.of("result", "success")));
   }
 }
