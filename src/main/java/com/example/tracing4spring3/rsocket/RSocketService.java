@@ -20,10 +20,12 @@ public class RSocketService {
     log.info("rsocket request start");
 
     Map<String, Object> data = new HashMap<>();
-    data.put("parentDeviceId", "c015898788b3423e8bf127ffc1eb283d");
+    data.put("parentDeviceId", "00d4f7a6084e4332aed828b8f1781ee6");
     Map<String, String> trigger = new HashMap<>();
     trigger.put("userId", "testUser");
-    trigger.put("serviceId", "ht-iot-app-ios-v1");
+    trigger.put("clientId", "ht-iot-app-ios-v1");
+    trigger.put("deviceId", "DeviceId");
+    trigger.put("type", "service");
 
     data.put("trigger", trigger);
 
@@ -46,5 +48,11 @@ public class RSocketService {
         .data(data)
         .send()
         .then(Mono.just(Map.of("result", "success")));
+  }
+
+  public Mono<?>rsocketRnR(final String routePath) {
+    return this.rSocketRequester
+            .route(routePath)
+            .retrieveMono(Object.class);
   }
 }

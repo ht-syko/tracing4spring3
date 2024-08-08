@@ -11,7 +11,8 @@ public class RSocketRestRouter {
   @Bean
   public RouterFunction<?> rsocketRoute(RSocketService rSocketService) {
     return RouterFunctions.route()
-        .GET("/test/r", request -> rSocketService.rsocketFnF(request.queryParam("to").orElseThrow()).flatMap(x -> ServerResponse.ok().bodyValue(x)))
+        .GET("/test/fnf", request -> rSocketService.rsocketFnF(request.queryParam("to").orElseThrow()).flatMap(x -> ServerResponse.ok().bodyValue(x)))
+        .GET("/test/rnr", request -> rSocketService.rsocketRnR(request.queryParam("to").orElseThrow()).flatMap(x -> ServerResponse.ok().bodyValue(x)))
         .build();
   }
 }
