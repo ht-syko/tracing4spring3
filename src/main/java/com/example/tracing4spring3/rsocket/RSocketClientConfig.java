@@ -65,7 +65,7 @@ public class RSocketClientConfig {
             .encoder(new Jackson2JsonEncoder())
             .decoder(new Jackson2JsonDecoder()))
         .dataMimeType(MimeType.valueOf("application/json"))
-        .transport(TcpClientTransport.create("127.0.0.1", 9091));
+        .transport(TcpClientTransport.create("127.0.0.1", 24049));
   }
 }
 

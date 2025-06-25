@@ -44,7 +44,7 @@ public class ConsumerConfig {
   @Bean
   public KafkaReceiver<String, String> kafkaReceiver(final ObservationRegistry observationRegistry) {
     Map<String, Object> consumerConfig = new HashMap<>();
-    consumerConfig.put(org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.2.89:29091");
+    consumerConfig.put(org.apache.kafka.clients.consumer.ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:29091");
     consumerConfig.put(org.apache.kafka.clients.consumer.ConsumerConfig.GROUP_ID_CONFIG, "test-1");
     consumerConfig.put(org.apache.kafka.clients.consumer.ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
     consumerConfig.put(org.apache.kafka.clients.consumer.ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
@@ -57,7 +57,7 @@ public class ConsumerConfig {
         .create(receiverOptions
             .withObservation(observationRegistry)
             .atmostOnceCommitAheadSize(20)
-            .subscription(Pattern.compile("chchoi.test.*")));
+            .subscription(Pattern.compile("syko.test.*")));
 
     kafkaReceiver
         .receive()

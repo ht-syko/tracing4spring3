@@ -31,7 +31,7 @@ public class ProducerConfig {
   @Bean
   public KafkaSender<String, Object> kafkaSender(final ObservationRegistry observationRegistry) {
     Map<String, Object> senderProps = new HashMap<>();
-    senderProps.put(org.apache.kafka.clients.producer.ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.2.89:29091");
+    senderProps.put(org.apache.kafka.clients.producer.ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:29091");
     senderProps.put(org.apache.kafka.clients.producer.ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
     senderProps.put(org.apache.kafka.clients.producer.ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
     senderProps.put("spring.json.add.type.headers", false);
@@ -49,7 +49,7 @@ public class ProducerConfig {
                 .map(i -> {
                   ProducerRecord<String, Object> record =
                       new ProducerRecord<>(
-                          "chchoi.test.2",
+                          "syko.test",
                           String.valueOf(i),
                           (Object) ("{\"id\":\"xxx\",\"message\":\"test\"}"));
                   log.info("produce data >> {}", record);
